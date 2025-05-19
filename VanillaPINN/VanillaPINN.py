@@ -91,7 +91,7 @@ if __name__ == "__main__":
     gamma = 0.01  # Diffusion Coefficient
     insize = 2   # (x, t)
     outsize = 1  # u
-    hsizes = [40, 40, 40, 40, 40, 40, 40, 40, 40, 40]  # hidden layers
+    hsizes = [40, 40, 40, 40, 40, 40, 40, 40, 40]  # hidden layers
 
     # Instantiate model and trainer
     model = MLP(insize, outsize, hsizes)

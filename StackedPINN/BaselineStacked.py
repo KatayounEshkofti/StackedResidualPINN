@@ -280,7 +280,7 @@ class StackedPINN:
 #%% Main execution to solve the 1D heat equation using the Stacked PINN
 if __name__ == "__main__":
     # Parameters
-    alpha = 0.01  # Diffusion coefficient
+    gamma = 0.01  # Diffusion coefficient
     insize = 2  # Input size (x, t)
     outsize = 1  # Output size (u)
     h_sf_sizes = [40, 40, 40]
@@ -320,7 +320,7 @@ if __name__ == "__main__":
     N_test = 200
     x_test = torch.FloatTensor(N_test, 1).uniform_(0, 1)
     t_test = torch.FloatTensor(N_test, 1).uniform_(0, 1)
-    u_test = analytical_solution(x_test, t_test, alpha)  # Analytical solution for testing
+    u_test = analytical_solution(x_test, t_test, gamma)  # Analytical solution for testing
 
     # Create instance of StackedPINN
     pinn = StackedPINN(model, optimizer, gamma=0.01)
@@ -335,7 +335,7 @@ if __name__ == "__main__":
 
 #%% Compute absolute error
 u_pred_test = model(torch.cat([x_test, t_test], dim=1)).detach()
-u_true_test = analytical_solution(x_test, t_test, alpha).detach()
+u_true_test = analytical_solution(x_test, t_test, gamma).detach()
 absolute_error = torch.abs(u_pred_test - u_true_test).numpy()
 
 plt.figure(figsize=(8, 6))

@@ -347,3 +347,9 @@ plt.grid(True)
 plt.show()
 
 # %%
+plt.figure(figsize=(6, 4))
+plt.boxplot(absolute_error, vert=True)
+plt.ylabel('Absolute Error')
+plt.title('Error Boxplot')
+plt.grid(True)
+plt.show()
